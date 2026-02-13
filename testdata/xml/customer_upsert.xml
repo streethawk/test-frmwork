@@ -1,0 +1,8 @@
+<root>
+  <customer>
+    <id> 101 </id>
+    <name>alice johnson</name>
+    <status>suspended</status>
+    <credit_limit>1250.75</credit_limit>
+  </customer>
+</root>
