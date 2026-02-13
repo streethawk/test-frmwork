@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from pathlib import Path
-
 from framework.models import MappingRule
 
 REQUIRED_COLUMNS = {
@@ -14,27 +12,10 @@ REQUIRED_COLUMNS = {
 }
 
 
-def _read_mapping_file(mapping_path: str, sheet_name: str | int = 0):
+def load_mapping_rules(excel_path: str, sheet_name: str = 0) -> list[MappingRule]:
     import pandas as pd
 
-    path = Path(mapping_path)
-    suffix = path.suffix.lower()
-
-    if suffix in {".csv", ".tsv"}:
-        separator = "\t" if suffix == ".tsv" else ","
-        return pd.read_csv(path, sep=separator)
-
-    try:
-        return pd.read_excel(path, sheet_name=sheet_name)
-    except Exception:
-        # Useful for `.xls` files that are actually delimiter-separated sample files.
-        return pd.read_csv(path, sep=None, engine="python")
-
-
-def load_mapping_rules(mapping_path: str, sheet_name: str | int = 0) -> list[MappingRule]:
-    import pandas as pd
-
-    frame = _read_mapping_file(mapping_path, sheet_name=sheet_name)
+    frame = pd.read_excel(excel_path, sheet_name=sheet_name)
     normalized = {c.strip().lower() for c in frame.columns}
     missing = REQUIRED_COLUMNS.difference(normalized)
     if missing:
