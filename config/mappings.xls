@@ -1,0 +1,5 @@
+xpath,sql mode,target table,column name,node type,transformation
+/root/customer/id/text(),insert,CUSTOMER,CUSTOMER_ID,element,strip
+/root/customer/name/text(),insert,CUSTOMER,CUSTOMER_NAME,element,upper
+/root/customer/status/text(),upsert,CUSTOMER,CUSTOMER_STATUS,element,upper
+/root/customer/credit_limit/text(),upsert,CUSTOMER,CREDIT_LIMIT,element,to_decimal

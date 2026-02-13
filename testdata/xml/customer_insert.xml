@@ -1,0 +1,8 @@
+<root>
+  <customer>
+    <id> 101 </id>
+    <name>alice johnson</name>
+    <status>active</status>
+    <credit_limit>1000.50</credit_limit>
+  </customer>
+</root>
