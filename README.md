@@ -65,7 +65,7 @@ pytest tests/steps/test_mapping_bdd.py
 Set variables then run integration marker:
 
 ```bash
-export TEST_MAPPING_XLSX=/path/to/mapping.xlsx
+export TEST_MAPPING_FILE=/path/to/mapping.xlsx  # or /path/to/mappings.xls
 export TEST_INPUT_XML=/path/to/input.xml
 export PIPELINE_TRIGGER_CMD="/path/to/trigger --arg value"
 export VERIFY_QUERY="SELECT * FROM CUSTOMER WHERE CUSTOMER_ID = '101'"

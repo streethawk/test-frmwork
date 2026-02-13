@@ -13,13 +13,13 @@ from framework.xml_reader import read_xml
 @pytest.mark.integration
 def test_pipeline_to_oracle_contract():
     """Template integration test. Configure env vars and command to enable."""
-    mapping_path = os.getenv("TEST_MAPPING_XLSX")
+    mapping_path = os.getenv("TEST_MAPPING_FILE") or os.getenv("TEST_MAPPING_XLSX")
     xml_path = os.getenv("TEST_INPUT_XML")
     trigger = os.getenv("PIPELINE_TRIGGER_CMD")
     verify_query = os.getenv("VERIFY_QUERY")
 
     if not all([mapping_path, xml_path, trigger, verify_query]):
-        pytest.skip("Integration env vars are not configured")
+        pytest.skip("Integration env vars are not configured (TEST_MAPPING_FILE/TEST_MAPPING_XLSX, TEST_INPUT_XML, PIPELINE_TRIGGER_CMD, VERIFY_QUERY)")
 
     rules = load_mapping_rules(mapping_path)
     root = read_xml(xml_path)
