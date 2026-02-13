@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xml-oracle-test-framework"
+version = "0.1.0"
+description = "Data-driven test framework for XML to Oracle pipeline validation"
+requires-python = ">=3.11"
+dependencies = [
+  "pytest>=8.0",
+  "lxml>=5.0",
+  "pandas>=2.0",
+  "openpyxl>=3.1",
+  "oracledb>=2.0"
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-ra"
+
+markers = [
+  "integration: end-to-end tests that require external pipeline and Oracle"
+]
